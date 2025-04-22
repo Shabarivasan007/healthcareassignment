@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - HealthCare+</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: url('https://wallpaperaccess.com/full/4112935.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .login-box {
+      animation: blink 2s infinite;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 400px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .login-box h2 {
+      margin-bottom: 25px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      box-shadow: 0 0 5px #00bcd4;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #00bcd4;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0097a7;
+    }
+
+    .extra-links, .back-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .extra-links a, .back-link a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .extra-links a:hover, .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login to HealthCare+</h2>
+    <form action="login.php" method="post">
+      <div class="form-group">
+        <label for="username">Email</label>
+        <input id="email" name="username" placeholder="Enter your email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <div class="extra-links">
+      <p><a href="#">Forgot Password?</a> | <a href="#">Register</a></p>
+    </div>
+    <div class="back-link">
+      <p><a href="index.html">&larr; Back to Home</a></p>
+    </div>
+  </div>
+</body>
+</html>

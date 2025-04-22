@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: url('https://st2.depositphotos.com/36924814/46071/i/450/depositphotos_460713580-stock-photo-medical-health-blue-cross-neon.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .register-container {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 650px;
+      animation: slideIn 1s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .register-container h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    form label {
+      color: #fff;
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 16px;
+    }
+
+    form textarea {
+      resize: vertical;
+    }
+
+    form button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #00bcd4;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    form button:hover {
+      background-color: #0097a7;
+      transform: scale(1.03);
+    }
+
+    .doctor-image {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .doctor-image img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+    }
+
+    .icon-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-preview {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-left: 5px solid #00bcd4;
+      padding: 15px;
+      border-radius: 10px;
+      color: #fff;
+    }
+
+    .summary-preview h3 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      width: 100%;
+      color: #fff;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2><i class="fas fa-calendar-check"></i> Register for Appointment</h2>
+    <div class="doctor-image">
+      <img id="doctor-photo" src="" alt="Doctor Image" />
+    </div>
+    <form id="register-form" action="register.php" method="post">
+      <label for="fullname" class="icon-label"><i class="fas fa-user"></i> Full Name</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="email" class="icon-label"><i class="fas fa-envelope"></i> Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="age" class="icon-label"><i class="fas fa-hourglass-half"></i> Age</label>
+      <input type="number" min="1" id="age" name="age" required>
+
+      <label for="gender" class="icon-label"><i class="fas fa-venus-mars"></i> Gender</label>
+      <select id="gender" name="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="symptoms" class="icon-label"><i class="fas fa-notes-medical"></i> Symptoms</label>
+      <textarea id="symptoms" name="symptoms" rows="4" required></textarea>
+
+      <label for="doctor" class="icon-label"><i class="fas fa-user-md"></i> Selected Doctor</label>
+      <input type="text" id="doctor" name="doctor" placeholder="Enter the Doctor Name">
+
+      <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
+
+      <div class="summary-preview" id="appointment-summary" style="display:none;">
+        <h3>Preview:</h3>
+        <p><strong>Name:</strong> <span id="preview-name"></span></p>
+        <p><strong>Age:</strong> <span id="preview-age"></span></p>
+        <p><strong>Gender:</strong> <span id="preview-gender"></span></p>
+        <p><strong>Doctor:</strong> <span id="preview-doctor"></span></p>
+        <p><strong>Symptoms:</strong> <span id="preview-symptoms"></span></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const doctorImageMap = {
+      "Dr.Radha": "https://tse1.mm.bing.net/th?id=OIP.srNFFzORAaERcWvhwgPzVAHaHa&pid=Api&P=0&h=180",
+      "Dr.Krishna Kumar": "https://randomuser.me/api/portraits/women/44.jpg",
+      "Dr.Karthikeyan": "https://randomuser.me/api/portraits/men/36.jpg",
+      "Dr.Saraswathi": "https://randomuser.me/api/portraits/women/65.jpg"
+    };
+
+    window.onload = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const doctorName = urlParams.get('doctor') || 'Dr. Unknown';
+      const doctorImage = doctorImageMap[doctorName] || 'https://bedfordmedical.com.au/sites/bedford/media/banners/adobestock_125253825.jpg';
+      document.getElementById('doctor-photo').src = doctorImage;
+
+      // Preview logic
+      const form = document.getElementById('register-form');
+      form.addEventListener('input', () => {
+        document.getElementById('appointment-summary').style.display = 'block';
+        document.getElementById('preview-name').textContent = document.getElementById('fullname').value;
+        document.getElementById('preview-age').textContent = document.getElementById('age').value;
+        document.getElementById('preview-gender').textContent = document.getElementById('gender').value;
+        document.getElementById('preview-doctor').textContent = document.getElementById('doctor').value;
+        document.getElementById('preview-symptoms').textContent = document.getElementById('symptoms').value;
+      });
+    }
+  </script>
+</body>
+</html>

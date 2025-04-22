@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HealthCare+ - Hospital Management</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">HealthCare+</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#doctors">Doctors</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="slideshow">
+    <div class="slides fade">
+      <img src="slide1.jpg" alt="Slide 1">
+      <div class="text">Trusted Care, Modern Facility</div>
+    </div>
+    <div class="slides fade">
+      <img src="slide2.jpg" alt="Slide 2">
+      <div class="text">Expert Doctors at Your Service</div>
+    </div>
+    <div class="slides fade">
+      <img src="slide3.jpg" alt="Slide 3">
+      <div class="text">Advanced Technology for Better Health</div>
+    </div>
+  </section>
+
+  <section class="doctors" id="doctors">
+    <h2>Our Specialists</h2>
+    <div class="doctor-cards">
+      <div class="card">
+        <img src="radha.jpg" alt="Dr. Smith">
+        <h3>Dr. Radha</h3>
+        <p>Cardiologist</p>
+        <p class="rating">Rating: ⭐⭐⭐⭐☆</p>
+        <a href="register.html?doctor=Dr.%20John%20Smith" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <img src="karthi.jpg" alt="Dr. Alice">
+        <h3>Dr. Krishnakumar</h3>
+        <p>Neurologist</p>
+        <p class="rating">Rating: ⭐⭐⭐⭐⭐</p>
+        <a href="register.html?doctor=Dr.%20Alice%20Walker" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <img src="doc.jpg" alt="Dr. James">
+        <h3>Dr. Karthikeyan</h3>
+        <p>Orthopedic Surgeon</p>
+        <p class="rating">Rating: ⭐⭐⭐⭐☆</p>
+        <a href="register.html?doctor=Dr.%20James%20Clark" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <img src="sara.jpg" alt="Dr. Sara">
+        <h3>Dr. Saraswathi</h3>
+        <p>Dermatologist</p>
+        <p class="rating">Rating: ⭐⭐⭐⭐☆</p>
+        <a href="register.html?doctor=Dr.%20Sara%20Lee" class="book-btn">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <h2>Why Choose HealthCare+</h2>
+    <div class="features-container">
+      <div class="feature-box">
+        <h3>24/7 Emergency Services</h3>
+        <p>Round-the-clock emergency care with advanced facilities and expert staff.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Modern Infrastructure</h3>
+        <p>Equipped with the latest technology and spacious, hygienic environments.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Online Appointment</h3>
+        <p>Book appointments easily online with real-time availability.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Experienced Doctors</h3>
+        <p>Our specialists have years of experience and global recognition.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 HealthCare+ | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("slides");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000);
+    }
+  </script>
+</body>
+</html>
